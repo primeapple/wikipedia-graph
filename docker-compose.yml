@@ -1,0 +1,45 @@
+version: '3'
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    # environment:
+    #   - MONGO_INITDB_ROOT_USERNAME=toni
+    #   - MONGO_INITDB_ROOT_PASSWORD=toni
+    #   - MONGO_INITDB_DATABASE=wiki
+    volumes: 
+      - /data/db:/data/db
+
+  mongo-express:
+    image: mongo-express
+    # environment:
+    #   ME_CONFIG_MONGODB_SERVER: database
+    #   ME_CONFIG_BASICAUTH_USERNAME: admin
+    #   ME_CONFIG_BASICAUTH_PASSWORD: mongo-admin
+    #   ME_CONFIG_SITE_BASEURL: /mongo-express/
+    depends_on:
+      - mongo
+    restart: always
+    ports:
+        - "8081:8081"
+
+  scrapyd:
+    build:
+      context: .
+      dockerfile: Dockerfile_scrapyd
+    ports:
+      - "6800:6800"
+    volumes:
+      - ./data/scrapyd:/var/lib/scrapyd
+      - /usr/local/lib/python3.7/dist-packages
+    restart: unless-stopped
+
+  # json-server:
+  #   image: vimagick/json-server
+  #   command: -H 0.0.0.0 -p 3000 -w db.json
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./data/json_server:/data
+  #   restart: always

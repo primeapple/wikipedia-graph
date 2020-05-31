@@ -1,0 +1,2 @@
+FROM vimagick/scrapyd
+RUN pip install pymongo
