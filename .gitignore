@@ -2,4 +2,6 @@ data/
 build/
 .vscode/
 project.egg-info/
-wiki/__pycache__/
+__pycache__/
+scrapy_log.txt
+results/
