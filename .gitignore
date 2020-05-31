@@ -1,0 +1,5 @@
+data/
+build/
+.vscode/
+project.egg-info/
+wiki/__pycache__/
