@@ -34,7 +34,7 @@ class DatabasePipeline:
         return cls(
             mongo_uri=crawler.settings.get('DATABASE_URI'),
             mongo_db=crawler.settings.get('DATABASE_NAME'),
-            collection_name=crawler.settings.get('COLLECTION_NAME')
+            collection_name=crawler.spider.collection
         )
 
     def open_spider(self, spider):

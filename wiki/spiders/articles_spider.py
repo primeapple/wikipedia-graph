@@ -7,6 +7,11 @@ class ArticlesSpider(scrapy.Spider):
         'https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Mathematics/List_of_mathematics_articles_(0%E2%80%939)'
     ]
 
+    def __init__(self, start_urls=None, collection=None, *args, **kwargs):
+        super(ArticlesSpider, self).__init__(*args, **kwargs)
+        self.collection = collection
+
+
     def parse(self, response):
         for article in response.xpath("//div[@class='mw-parser-output']/p/a"):
             # there are some hidden links, we don't want them

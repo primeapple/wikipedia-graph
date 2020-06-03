@@ -4,7 +4,8 @@ import requests
 from ..items import WikipageItem, WikipageLoader
 
     
-def get_start_urls(start_urls, link, file, parts, this_part):
+def get_start_urls(start_urls, link, parts, this_part):
+    urls = []
     # if spider was called from commandline or program
     if start_urls is not None:
         # called from commandline
@@ -15,17 +16,11 @@ def get_start_urls(start_urls, link, file, parts, this_part):
         # if spider was called from another program
         elif isinstance(start_urls, list):
             urls = start_urls
-    # either link or file is not none
-    else:
-        # got a link
-        if link is not None:
-            response = requests.get(link)
-            # convert jsonlines file
-            json_data = [json.loads(line) for line in response.text.split('\n')[:-1]]
-        # got a file
-        else:
-            with open(file) as f:
-                json_data = json.load(f)
+    # link is not none
+    elif link is not None:
+        response = requests.get(link)
+        # convert jsonlines file
+        json_data = [json.loads(line) for line in response.text.split('\n')[:-1]]
         urls = [item['url'] for item in json_data]
     return urls[this_part::parts]
 
@@ -39,15 +34,16 @@ class WikipageSpider(scrapy.Spider):
             file_start_url_list=None,
             parts_to_divide_into=1,
             this_part_number=0,
+            collection=None,
             *args, **kwargs):
 
         super(WikipageSpider, self).__init__(*args, **kwargs)
         self.start_urls = get_start_urls(
             start_urls,
             link_start_url_list, 
-            file_start_url_list, 
             int(parts_to_divide_into), 
             int(this_part_number))
+        self.collection = collection
 
 
     def parse(self, response):

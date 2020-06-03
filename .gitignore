@@ -5,3 +5,5 @@ project.egg-info/
 __pycache__/
 scrapy_log.txt
 results/
+benchmarks.txt
+TODO

@@ -20,10 +20,9 @@ NEWSPIDER_MODULE = 'wiki.spiders'
 LOG_LEVEL = 'INFO'
 
 # DATABASE
-# DATABASE_URI = 'localhost:27017'
-DATABASE_URI = 'mongo:27017'
+DATABASE_URI = 'localhost:27017'
+# DATABASE_URI = 'mongo:27017'
 DATABASE_NAME = 'wiki'
-COLLECTION_NAME = 'article_list_2'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'wiki (+http://www.yourdomain.com)'
