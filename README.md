@@ -39,15 +39,15 @@ scrapyd-client schedule -p wiki --arg collection=articles_new articles
 
 Now have a look at [http://localhost:6800/jobs](http://localhost:6800/jobs). There should be a running job. When it finishes, click on the "Items" Link on the job page. This links to an url with a JSON Lines file. Copy this URL!
 
-Now we want to run the `wikipage` spider. Make sure to use another collection name this time:
-
-```bash
-scrapyd-client schedule -p wiki --arg --arg link_start_url_list=LINK_TO_JSON_LINES_FILE --arg collection=ANOTHER_COLLECTION_NAME wikipage
-```
-
+We COULD use the same way to run the `wikipage` spider. Use another collection name this time.  
 However, this would limit the run to only one thread.
 
-To make it run on multiple threads use the little script I created (of course use the fitting arguments):
+```bash
+scrapyd-client schedule -p wiki --arg link_start_url_list=LINK_TO_JSON_LINES_FILE --arg collection=ANOTHER_COLLECTION_NAME wikipage
+```
+
+The better way, to make it run on multiple threads use the little script I created (of course use the fitting arguments):
+
 ```bash
 bash ./run_wiki_page_in_scrapyd.sh NUM_OF_THREADS COLLECTION_NAME LINK_TO_JSON_LINES_FILE
 ```
@@ -61,7 +61,7 @@ You can also use scrapy without scrapyd. This just makes it harder to run multip
 
 Install some more dependencies:
 ```bash
-pip install scrapy pymongo
+pip install pymongo
 ```
 
 To crawl a spider:
