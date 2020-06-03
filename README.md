@@ -34,7 +34,7 @@ Now we can start the process by running the `articles` spider. This will scrap t
 Please choose an appropriate collection name for the mongodb to store the results in.
 
 ```bash
-curl http://localhost:6800/schedule.json -d project=wiki -d spider=articles -d collection=COLLECTION_NAME
+scrapyd-client schedule -p wiki --arg collection=articles_new articles
 ```
 
 Now have a look at [http://localhost:6800/jobs](http://localhost:6800/jobs). There should be a running job. When it finishes, click on the "Items" Link on the job page. This links to an url with a JSON Lines file. Copy this URL!
@@ -42,14 +42,14 @@ Now have a look at [http://localhost:6800/jobs](http://localhost:6800/jobs). The
 Now we want to run the `wikipage` spider. Make sure to use another collection name this time:
 
 ```bash
-curl http://localhost:6800/schedule.json -d project=wiki -d spider=wikipage -d link_start_url_list=LINK_TO_JSON_LINES_FILE -d collection=ANOTHER_COLLECTION_NAME
+scrapyd-client schedule -p wiki --arg --arg link_start_url_list=LINK_TO_JSON_LINES_FILE --arg collection=ANOTHER_COLLECTION_NAME wikipage
 ```
 
 However, this would limit the run to only one thread.
 
-To make it run on multiple threads use the little script I created (of course, use the actual url and an actual number):
+To make it run on multiple threads use the little script I created (of course use the fitting arguments):
 ```bash
-bash ./run_wiki_page_in_scrapyd.sh NUM_OF_THREADS ANOTHER_COLLECTION_NAME LINK_TO_JSON_LINES_FILE
+bash ./run_wiki_page_in_scrapyd.sh NUM_OF_THREADS COLLECTION_NAME LINK_TO_JSON_LINES_FILE
 ```
 
 ## Monitoring

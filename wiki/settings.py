@@ -20,8 +20,8 @@ NEWSPIDER_MODULE = 'wiki.spiders'
 LOG_LEVEL = 'INFO'
 
 # DATABASE
-DATABASE_URI = 'localhost:27017'
-# DATABASE_URI = 'mongo:27017'
+# DATABASE_URI = 'localhost:27017'
+DATABASE_URI = 'mongo:27017'
 DATABASE_NAME = 'wiki'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -44,7 +44,7 @@ REACTOR_THREADPOOL_MAXSIZE = 20
 
 # Disable cookies (enabled by default)
 COOKIES_ENABLED = False
-# Disable redirects
+# Enable redirects
 REDIRECT_ENABLED = True
 
 # Disable Telnet Console (enabled by default)

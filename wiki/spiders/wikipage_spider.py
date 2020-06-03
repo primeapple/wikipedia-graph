@@ -18,10 +18,12 @@ def get_start_urls(start_urls, link, parts, this_part):
             urls = start_urls
     # link is not none
     elif link is not None:
-        response = requests.get(link)
-        # convert jsonlines file
-        json_data = [json.loads(line) for line in response.text.split('\n')[:-1]]
-        urls = [item['url'] for item in json_data]
+        # for now, we only support direct json lines urls
+        if link.endswith('.jl'):
+            response = requests.get(link)
+            # convert jsonlines file
+            json_data = [json.loads(line) for line in response.text.split('\n')[:-1]]
+            urls = [item['url'] for item in json_data]
     return urls[this_part::parts]
 
 
