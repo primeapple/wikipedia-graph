@@ -15,8 +15,8 @@ Then, just follow the steps below:
 # clone the repository
 git clone https://github.com/primeapple/wikipedia-graph.git
 cd wikipedia-graph
-# install scrapyd-deploy
-pip install scrapyd-deploy
+# install scrapyd-client
+pip install git+https://github.com/scrapy/scrapyd-client
 # starting the docker containers (mongodb, mongodb-express, scrapyd)
 docker-compose up
 ```
