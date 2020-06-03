@@ -13,8 +13,8 @@ services:
 
   mongo-express:
     image: mongo-express
-    # environment:
-    #   ME_CONFIG_MONGODB_SERVER: database
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
     #   ME_CONFIG_BASICAUTH_USERNAME: admin
     #   ME_CONFIG_BASICAUTH_PASSWORD: mongo-admin
     #   ME_CONFIG_SITE_BASEURL: /mongo-express/

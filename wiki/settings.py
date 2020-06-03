@@ -23,7 +23,7 @@ LOG_LEVEL = 'INFO'
 # DATABASE_URI = 'localhost:27017'
 DATABASE_URI = 'mongo:27017'
 DATABASE_NAME = 'wiki'
-COLLECTION_NAME = 'wikipages_1'
+COLLECTION_NAME = 'article_list_2'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'wiki (+http://www.yourdomain.com)'
@@ -46,7 +46,7 @@ REACTOR_THREADPOOL_MAXSIZE = 20
 # Disable cookies (enabled by default)
 COOKIES_ENABLED = False
 # Disable redirects
-REDIRECT_ENABLED = False
+REDIRECT_ENABLED = True
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False

@@ -1,11 +1,7 @@
 #!/bin/bash
 # arguments parsing
 PARTS=$1
-if [ $# -eq 1 ]; then
-    LINK_START_URLS='http://localhost:6800/items/wiki/articles/b091d6d0a32c11ea86f80242ac120002.jl'
-else
-    LINK_START_URLS=$2
-fi
+LINK_START_URLS=$2
 
 # actual commands
 for part in $(seq 0 $((PARTS-1))); do
