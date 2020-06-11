@@ -70,4 +70,26 @@ scrapy crawl -a ARGUMENT_KEY=ARGUMENT_VALUE NAME_OF_SPIDER
 ```
 
 ## Visualizing
-TODO
+We use [Gephi](https://gephi.org/) to visualize the results, so be sure to download this. However you can use any software that you want.
+
+### Creating a Graph File
+First of all we need to create a graph file. We decided to use [GraphML](https://en.wikipedia.org/wiki/GraphML) for this. So first we need to install a graphml parser for python:
+```bash
+pip install pygraphml
+```
+After this, please download the json file of the result from the `wikipage` spider from the mongodb, that we set up before. It is recommend to place it in the `results/` folder.  
+Now lets look into the `create_graphml.py` file. Here you have to set the input and output filename (line 5-6). The input file is the path to your wikipage json result. The output file is the path where you want to output your `.graphml` file to.
+
+Now run the python script:
+```bash
+python create_graphml.py
+```
+
+### Using Gephi
+You can now load your file into Gephi. Make sure to check that the edges are set as directed (should be so by default).
+
+In the overview tab you will now see a black square. This is the graph, but we need to make sure it looks a little better. To do this, use the `OpenOrd` Algorithm below `Layout` (you may also use another algorithm but this one is the fastest). After running the algorithm, check `Appearance` -> `Nodes` -> `partition` -> `main_category` as attribute. Here you can also add more colors.
+
+Feel free to visualize the graph even more. Write us some issues or feedback. Tell us what you found. Add some nice pictures!
+
+Enjoy!
